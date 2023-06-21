@@ -1,3 +1,25 @@
+<?php
+include ('connection.php'); ?>
+<?php 
+if(isset($_POST['submit']))
+{
+  $month=$_POST['month'];
+  $year=$_POST['year'];
+  $name=$_POST['name'];
+  $number=$_POST['number'];
+  $date=$_POST['date'];
+  $code=$_POST['code'];
+  $zip=$_POST['zip'];
+  $query="INSERT INTO subscribe (month,year,name,number,date,code,zip) VALUES('$month','$year','$name','$number','$date','$code','$zip')";
+  $run=mysqli_query($con,$query);
+  if($run){
+    echo'<script >alert("Data Saved")</script>';
+  }
+  else{
+    echo'<script >alert("Data Not Saved")</script>';
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -151,13 +173,13 @@
             <form class="payment-form">
               <div class="form-group">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="month" id="flexRadioDefault1">
                   <label class="form-check-label mx-5" for="flexRadioDefault1">
                     Monthly subscription
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <input class="form-check-input" type="radio" name="year" id="flexRadioDefault2" checked>
                   <label class="form-check-label mx-5" for="flexRadioDefault2">
                     Yearly Subscription
                   </label>
@@ -165,20 +187,20 @@
               </div>
                 <div class="form-group">
                     <label or="NameOnCard">Name on card</label>
-                    <input id="NameOnCard" class="form-control" type="text" maxlength="255"></input>
+                    <input id="NameOnCard" class="form-control" type="text" name="name" maxlength="255"></input>
                 </div>
                 <div class="form-group">
                     <label for="CreditCardNumber">Card number</label>
-                    <input id="CreditCardNumber" class="null card-image form-control" type="text"></input>
+                    <input id="CreditCardNumber" class="null card-image form-control" name="number" type="text"></input>
                 </div>
                 <div class="expiry-date-group form-group">
                     <label for="ExpiryDate">Expiry date</label>
-                    <input id="ExpiryDate" class="form-control" type="text" placeholder="MM / YY" maxlength="7"></input>
+                    <input id="ExpiryDate" class="form-control" type="text"  name="date"placeholder="MM / YY" maxlength="7"></input>
                 </div>
                 <div class="security-code-group form-group">
                     <label for="SecurityCode">Security code</label>
                     <div class="input-container" >
-                        <input id="SecurityCode" class="form-control" type="text" ></input>
+                        <input id="SecurityCode" class="form-control"  name="code" type="text" ></input>
                         <i id="cvc" class="fa fa-question-circle"></i>
                     </div>
                     <div class="cvc-preview-container two-card hide">
@@ -189,11 +211,11 @@
                 <div class="zip-code-group form-group">
                     <label for="ZIPCode">ZIP/Postal code</label>
                     <div class="input-container">
-                        <input id="ZIPCode" class="form-control" type="text" maxlength="10"></input>
+                        <input id="ZIPCode" class="form-control" type="text" name="zip" maxlength="10"></input>
                         <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="Enter the ZIP/Postal code for your credit card billing address."><i class="fa fa-question-circle"></i></a>
                     </div>
                 </div>
-                <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
+                <button id="PayButton" class="btn btn-block btn-success submit-button"  name="submit"type="submit">
                     <span class="align-middle">Confirm Payment</span>
                 </button>
             </form>
