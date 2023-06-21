@@ -1,3 +1,15 @@
+<?php
+include ('connection.php'); ?>
+<?php 
+  //if user clicked the button
+  if(isset($_POST['submit']) && isset($_files['photo'])){
+  $name=mysqli_real_escape_string($con, $_POST['name']);
+  $type=mysqli_real_escape_string($con, $_POST['type']);
+  $photo=mysqli_real_escape_string($con, $_POST['photo']);
+  $email=mysqli_real_escape_string($con, $_POST['email']);
+  $fullname=mysqli_real_escape_string($con, $_POST['fullname']);
+  
+  }?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -119,34 +131,34 @@
                 <div class="row">
                     <div class="col">
                         <label>Recipe name</label>
-                      <input type="text" class="form-control" placeholder="">
+                      <input type="text" name="name"  class="form-control" placeholder="">
                     </div>
                     <div class="col">
                         <label>Type</label>
-                      <input type="text" class="form-control" placeholder="e.g. dessert, dinner,..">
+                      <input type="text"  name="type" class="form-control" placeholder="e.g. dessert, dinner,..">
                     </div>
                   </div>
-                <div class="form-group">
+                <div class="form-group" method="POST" encrypt="multipart/form-data">
                   <label for="exampleFormControlTextarea1">List of ingredients</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                  <textarea class="form-control" name="ingredients"  id="exampleFormControlTextarea1" rows="2"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Cooking steps</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                    <textarea class="form-control" name="steps"  id="exampleFormControlTextarea1" rows="4"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlFile1">Upload photos</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file"  name="photo" class="form-control-file" id="exampleFormControlFile1">
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" name="email"  id="exampleFormControlInput1" placeholder="name@example.com">
                   </div>
                   <div class="form-group">
                     <label for="formGroupExampleInput">Your full name</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                    <input type="text" class="form-control"name="fullname" id="formGroupExampleInput" placeholder="">
                   </div>
-                  <button class="btn2" type="submit">Submit</button>
+                  <button class="btn2" name="submit"  type="submit">Submit</button>
               </form>
               </div>
 
