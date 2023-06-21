@@ -1,3 +1,26 @@
+<?php
+include ('connection.php'); ?>
+<?php 
+if(isset($_POST['submit']))
+{
+  $company=$_POST['company'];
+  $producttype=$_POST['producttype'];
+  $website=$_POST['website'];
+  $address=$_POST['address'];
+  $fullname=$_POST['fullname'];
+  $email=$_POST['email'];
+  $phone=$_POST['phone'];
+  $contactrole=$_POST['contactrole'];
+  $query="INSERT INTO vendor (company,producttype,website,address,fullname,email,phone,contactrole) VALUES('$company','$producttype','$website','$address','$fullname','$phone','$email','$contactrole')";
+  $run=mysqli_query($con,$query);
+  if($run){
+    echo'<script >alert("Data Saved")</script>';
+  }
+  else{
+    echo'<script >alert("sorry! there is something wrong in your data , please try again")</script>';
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -108,10 +131,10 @@
               <form class="signup-form">
                 <div class="form-outline mb-4">
                     <label class="form-label" for="store-name">Company Name</label>
-                      <input type="text" id="store-name" class="form-control form-control-lg" />
+                      <input type="text" id="store-name" name="company" class="form-control form-control-lg" />
                     </div>
                     <div class="form-outline mb-4">
-                        <label for="product-type" class="form-label">Products Type</label>
+                        <label for="product-type" class="form-label" name="producttype">Products Type</label>
                     <select id="product-type" name="continent" class="form-control form-control-lg">
                         <option>Gluten Free</option>
                         <option>Lactose Free</option>
@@ -122,28 +145,28 @@
                 </div>
                 <div class="form-outline mb-4">
                     <label class="form-label" for="website">Website</label>
-                      <input type="url" id="website" class="form-control form-control-lg" />
+                      <input type="url" id="website" name="website" class="form-control form-control-lg" />
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="address">Address</label>
-                          <input type="text" id="address" class="form-control form-control-lg" />
+                          <input type="text" id="address" name="address" class="form-control form-control-lg" />
                           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13817.022825606782!2d31.43547194960938!3d30.029521074819375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1685218778070!5m2!1sen!2seg" width="440" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="col-md"></iframe>
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label" for="full-name">Full Name</label>
-                              <input type="text" id="full-name" class="form-control form-control-lg" />
+                              <input type="text" id="full-name"  mame="fullname"class="form-control form-control-lg" />
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="phone-no">Mobile Phone Number</label>
-                              <input type="number" id="phone-no" class="form-control form-control-lg" placeholder="+201XXXXXXXXX" />
+                              <input type="number" id="phone-no" name="phone" class="form-control form-control-lg" placeholder="+201XXXXXXXXX" />
                             </div>
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="email">Email</label>
-                              <input type="email" id="email" class="form-control form-control-lg" />
+                              <input type="email" id="email" name="email" class="form-control form-control-lg" />
                             </div>
                             <div class="form-outline mb-4">
                                 <label for="contact-role" class="form-label">Contact Role</label>
-                            <select id="contact-role" name="contact-role" class="form-control form-control-lg">
+                            <select id="contact-role" name="contactrole" class="form-control form-control-lg">
                                 <option>Owner</option>
                                 <option>Co-Owner</option>
                                 <option>Manager</option>
@@ -159,7 +182,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                  <button type="button"
+                  <button type="button" name="submit"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" id="signup-btn">Submit Info</button><br>
                 </div>
 

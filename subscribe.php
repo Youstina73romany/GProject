@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
     echo'<script >alert("Data Saved")</script>';
   }
   else{
-    echo'<script >alert("Data Not Saved")</script>';
+    echo'<script >alert("sorry! there is something wrong in your data , please try again")</script>';
   }
 }
 ?>
