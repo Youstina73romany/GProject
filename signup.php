@@ -16,7 +16,7 @@ if(!isset($SESSION)){
         $sql="INSERT INTO users (username,email,age,continent,password) VALUES ('$username','$email','$age','$continent','$password')";
         mysqli_query($con,$sql);
         $_SESSION['name']=$username;
-        echo "<script> alert('WELCOME DEAR.$_SESSION'name'') </script>";
+         //echo "<script> alert(' 'WELCOME DEAR' .$_SESSION 'name'') </script>";
         echo"WELCOME DEAR"  .$_SESSION['name'];
     }
     }
